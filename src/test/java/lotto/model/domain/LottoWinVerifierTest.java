@@ -20,7 +20,7 @@ class LottoWinVerifierTest {
 
         LottoWinVerifier lottoWinVerifier = new LottoWinVerifier(numbers, lottoList);
 
-        Assertions.assertThat(lottoWinVerifier.toString()).contains("\\d개 일치", "\\d개");
+        Assertions.assertThat(lottoWinVerifier.toString()).contains("개 일치", "개");
 
     }
 

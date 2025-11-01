@@ -23,6 +23,15 @@ public class LottoWinVerifier {
         this.lottoWinList = lottoList;
         this.userNumbers = inputNumbers;
     }
-    
+
+    @Override
+    public String toString() {
+
+        return "3개 일치 (5,000원) - " + fifthPlaceCount + "개\n"
+                + "4개 일치 (50,000원) - " + fourthPlaceCount + "개\n"
+                + "5개 일치 (1,500,000원) - " + thirdPlaceCount + "개\n"
+                + "5개 일치, 보너스 볼 일치 (30,000,000원) -" + secondPlaceCount + "개\n"
+                + "6개 일치 (2,000,000,000원) -" + fifthPlaceCount + "개\n";
+    }
 
 }
