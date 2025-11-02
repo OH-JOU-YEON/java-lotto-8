@@ -9,9 +9,10 @@ import org.junit.jupiter.api.Test;
 
 class LottoWinVerifierTest {
 
+    LottoMaker lottoMaker = new LottoMaker();
     List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
     Lotto lotto = new Lotto(numbers);
-    List<Lotto> lottoList = List.of(lotto);
+    List<LottoAndBonusNumber> lottoList = lottoMaker.issueLotto(1000);
 
     @Test
     @DisplayName("로또 검증기 출력 테스트")

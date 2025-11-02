@@ -12,13 +12,13 @@ public class LottoWinVerifier {
     // 수익률을 검사한다.
 
     private final List<Integer> userNumbers;
-    private final List<Lotto> lottoList;
+    private final List<LottoAndBonusNumber> lottoList;
 
 
     private final Map<Place, Integer> placeCount = new EnumMap<>(Place.class);
 
 
-    public LottoWinVerifier(List<Integer> inputNumbers, List<Lotto> lottoList, int bonusNumber) {
+    public LottoWinVerifier(List<Integer> inputNumbers, List<LottoAndBonusNumber> lottoList, int bonusNumber) {
         this.lottoList = lottoList;
         this.userNumbers = inputNumbers;
         verifyLottoPlace(bonusNumber);
@@ -30,8 +30,8 @@ public class LottoWinVerifier {
 
         Place[] places = Place.values();
 
-        for (Lotto lotto : this.lottoList) {
-            int lottoWinNumber = lotto.validateWin(this.userNumbers, bonusNumber);
+        for (LottoAndBonusNumber lottoAndBonus : this.lottoList) {
+            int lottoWinNumber = lottoAndBonus.lotto().validateWin(this.userNumbers, bonusNumber);
             int placeNumber = changeLottoWinOrdinalToPlaceOrdinal(lottoWinNumber);
             Integer beforeValue = nullCheck(placeCount.get(places[placeNumber]));
             placeCount.put(places[placeNumber], beforeValue + 1);
