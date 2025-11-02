@@ -17,7 +17,7 @@ public class Lotto {
         }
     }
 
-    public int validateWin(List<Integer> userNumbers, int bonusNumber) {
+    public int validateWin(List<Integer> userNumbers, int bonusNumber, int userBonusNumber) {
 
         // 유저 넘버와 비교해서 얼마나 일치했는지 반환한다.
 
@@ -29,7 +29,7 @@ public class Lotto {
             }
         }
 
-        boolean bonus = compareBonusNumber(bonusNumber);
+        boolean bonus = compareBonusNumber(bonusNumber, userBonusNumber);
 
         return determinePlace(count, bonus);
     }
@@ -56,16 +56,8 @@ public class Lotto {
         return count;
     }
 
-    public boolean compareBonusNumber(int bonusNumber) {
-        boolean bonus = false;
-        
-        for (Integer num : this.numbers) {
-            if (bonusNumber == num) {
-                bonus = true;
-                break;
-            }
+    public boolean compareBonusNumber(int bonusNumber, int userBonusNumber) {
 
-        }
-        return bonus;
+        return bonusNumber == userBonusNumber;
     }
 }
