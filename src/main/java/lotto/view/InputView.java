@@ -17,4 +17,9 @@ public class InputView {
         return Console.readLine();
     }
 
+    public long getBonusNumber() {
+        System.out.println(InputNotice.BONUS_NUMBER_INPUT.getNoticeString());
+        return Long.parseLong(Console.readLine());
+    }
+
 }
