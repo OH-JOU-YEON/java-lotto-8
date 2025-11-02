@@ -51,7 +51,7 @@ public class LottoWinVerifier {
         return lottoWinOrdinal - 1;
     }
 
-    private double calculateProfitRate(int inputPrice) {
+    private double calculateProfitRate(long inputPrice) {
         return (getProfit() - inputPrice) / inputPrice * 100;
     }
 
@@ -80,7 +80,7 @@ public class LottoWinVerifier {
         return sb.toString();
     }
 
-    public String printProfitRate(int inputPrice) {
+    public String printProfitRate(long inputPrice) {
 
         return "총 수익률은 "
                 + String.format("%.1f", calculateProfitRate(inputPrice))

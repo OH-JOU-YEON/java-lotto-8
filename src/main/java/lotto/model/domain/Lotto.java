@@ -60,4 +60,8 @@ public class Lotto {
 
         return bonusNumber == userBonusNumber;
     }
+
+    public String printLotto() {
+        return this.numbers.toString();
+    }
 }
