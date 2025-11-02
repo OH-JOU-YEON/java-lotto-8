@@ -82,7 +82,7 @@ public class LottoWinVerifier {
     public String printProfitRate(int inputPrice) {
 
         return "총 수익률은 "
-                + String.format("%.2f", calculateProfitRate(inputPrice))
+                + String.format("%.1f", calculateProfitRate(inputPrice))
                 + "입니다";
     }
 }
