@@ -1,8 +1,9 @@
-package lotto.model.domain;
+package lotto.model.domain.verifier;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
+import lotto.model.domain.Enum.ErrorNotice;
 
 public class InputVerifier {
 
@@ -39,4 +40,5 @@ public class InputVerifier {
                     ErrorNotice.INPUT_USER_NUMBERS_FORMAT_ERROR_NOTICE.getErrorNoticeString());
         }
     }
+
 }

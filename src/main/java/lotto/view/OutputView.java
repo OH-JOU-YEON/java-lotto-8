@@ -2,7 +2,7 @@ package lotto.view;
 
 import java.util.List;
 import lotto.model.domain.Lotto;
-import lotto.model.domain.LottoWinVerifier;
+import lotto.model.domain.verifier.LottoWinVerifier;
 
 public class OutputView {
 

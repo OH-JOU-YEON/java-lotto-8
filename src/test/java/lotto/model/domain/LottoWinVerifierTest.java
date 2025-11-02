@@ -2,6 +2,7 @@ package lotto.model.domain;
 
 import java.util.Arrays;
 import java.util.List;
+import lotto.model.domain.verifier.LottoWinVerifier;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
