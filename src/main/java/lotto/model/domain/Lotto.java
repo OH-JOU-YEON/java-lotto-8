@@ -25,22 +25,25 @@ public class Lotto {
 
         for (Integer num : this.numbers) {
             for (Integer userNum : userNumbers) {
-                count = +compareEachNumber(num, userNum);
+                count += compareEachNumber(num, userNum);
             }
         }
 
         boolean bonus = compareBonusNumber(bonusNumber);
 
         return determinePlace(count, bonus);
-
     }
 
     public int determinePlace(int count, boolean bonus) {
-        if (count == 5 && bonus) {
-            return 2;
+        if ((count == 5 && bonus) || (count >= 6)) {
+            return 7 - count;
         }
 
-        return 7 - count;
+        if (count >= 3) {
+            return 8 - count;
+        }
+
+        return 0;
     }
 
     public int compareEachNumber(Integer num, Integer userNum) {
@@ -55,6 +58,7 @@ public class Lotto {
 
     public boolean compareBonusNumber(int bonusNumber) {
         boolean bonus = false;
+        
         for (Integer num : this.numbers) {
             if (bonusNumber == num) {
                 bonus = true;

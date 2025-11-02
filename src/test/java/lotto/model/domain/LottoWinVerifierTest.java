@@ -15,11 +15,20 @@ class LottoWinVerifierTest {
 
     @Test
     @DisplayName("로또 검증기 출력 테스트")
-    public void lootVerifierOutTest() {
+    public void lottoVerifierOutTest() {
 
         LottoWinVerifier lottoWinVerifier = new LottoWinVerifier(numbers, lottoList, 7);
 
         Assertions.assertThat(lottoWinVerifier.printWinCount()).contains("개 일치", "개");
+
+    }
+
+    @Test
+    @DisplayName("검증기가 올바른 수익률을 반환하는지 테스트")
+    public void lottoProfitRateTest() {
+        LottoWinVerifier lottoWinVerifier = new LottoWinVerifier(numbers, lottoList, 7);
+
+        Assertions.assertThat(lottoWinVerifier.printProfitRate(1000)).contains("199999900.00");
 
     }
 

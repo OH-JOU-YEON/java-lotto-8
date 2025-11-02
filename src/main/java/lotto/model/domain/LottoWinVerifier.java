@@ -33,7 +33,7 @@ public class LottoWinVerifier {
         for (Lotto lotto : this.lottoList) {
             int lottoWinNumber = lotto.validateWin(this.userNumbers, bonusNumber);
             int placeNumber = changeLottoWinOrdinalToPlaceOrdinal(lottoWinNumber);
-            Integer beforeValue = nullCheck(placeCount.get(places[placeNumber - 1]));
+            Integer beforeValue = nullCheck(placeCount.get(places[placeNumber]));
             placeCount.put(places[placeNumber], beforeValue + 1);
         }
 
