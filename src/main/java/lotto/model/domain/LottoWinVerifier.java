@@ -31,7 +31,8 @@ public class LottoWinVerifier {
         Place[] places = Place.values();
 
         for (LottoAndBonusNumber lottoAndBonus : this.lottoList) {
-            int lottoWinNumber = lottoAndBonus.lotto().validateWin(this.userNumbers, bonusNumber);
+            int lottoWinNumber = lottoAndBonus.lotto()
+                    .validateWin(this.userNumbers, lottoAndBonus.bonusNumber(), bonusNumber);
             int placeNumber = changeLottoWinOrdinalToPlaceOrdinal(lottoWinNumber);
             Integer beforeValue = nullCheck(placeCount.get(places[placeNumber]));
             placeCount.put(places[placeNumber], beforeValue + 1);
