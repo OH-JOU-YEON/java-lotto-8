@@ -12,7 +12,7 @@ class LottoMakerTest {
     @Test
     @DisplayName("로또금액과 돈을 넣으면 개수만큼 로또를 발행하는지 테스트")
     public void lottoQuantityTest() {
-        List<Lotto> issuedLotto = lottoMaker.issueLotto(10000);
+        List<LottoAndBonusNumber> issuedLotto = lottoMaker.issueLotto(10000);
 
         Assertions.assertThat(issuedLotto.size()).isEqualTo(10);
     }

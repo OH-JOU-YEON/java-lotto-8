@@ -10,12 +10,16 @@ public class LottoMaker {
     // 발행한 로또를 반환한다.
     private final long lottoPrice = 1000;
 
-    public List<Lotto> issueLotto(long inputPrice) {
+    public List<LottoAndBonusNumber> issueLotto(long inputPrice) {
         long lottoQuantity = getLottoQuantity(inputPrice);
-        List<Lotto> lottoList = new ArrayList<>();
+        List<LottoAndBonusNumber> lottoList = new ArrayList<>();
 
         for (int i = 0; i < lottoQuantity; i++) {
-            lottoList.add(new Lotto(Randoms.pickUniqueNumbersInRange(1, 45, 6)));
+            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 7);
+            Lotto lotto = new Lotto(randomNumbers.subList(0, 6));
+            Integer bonusNumber = randomNumbers.get(6);
+            LottoAndBonusNumber lottoAndBonusNumber = new LottoAndBonusNumber(lotto, bonusNumber);
+            lottoList.add(lottoAndBonusNumber);
         }
 
         return lottoList;
