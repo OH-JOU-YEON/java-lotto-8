@@ -1,37 +1,88 @@
 package lotto.model.domain;
 
+import java.util.EnumMap;
 import java.util.List;
-import lotto.Lotto;
+import java.util.Map;
 
 public class LottoWinVerifier {
 
     // 사용자가 고른 로또 당첨 번호를 저장한다.
     // 로또 묶음을 받아 당첨 내역을 검사한다.
     // 당첨 개수를 저장한다.
+    // 수익률을 검사한다.
 
     private final List<Integer> userNumbers;
-    private final List<Lotto> lottoWinList;
-
-    private int fifthPlaceCount;
-    private int fourthPlaceCount;
-    private int thirdPlaceCount;
-    private int secondPlaceCount;
-    private int firstPlaceCount;
+    private final List<Lotto> lottoList;
 
 
-    public LottoWinVerifier(List<Integer> inputNumbers, List<Lotto> lottoList) {
-        this.lottoWinList = lottoList;
+    private final Map<Place, Integer> placeCount = new EnumMap<>(Place.class);
+
+
+    public LottoWinVerifier(List<Integer> inputNumbers, List<Lotto> lottoList, int bonusNumber) {
+        this.lottoList = lottoList;
         this.userNumbers = inputNumbers;
+        verifyLottoPlace(bonusNumber);
     }
 
-    @Override
-    public String toString() {
+    private void verifyLottoPlace(int bonusNumber) {
+        // 로또 검증하기
+        // 로또 등수를 맵에 저장한다.
 
-        return "3개 일치 (5,000원) - " + fifthPlaceCount + "개\n"
-                + "4개 일치 (50,000원) - " + fourthPlaceCount + "개\n"
-                + "5개 일치 (1,500,000원) - " + thirdPlaceCount + "개\n"
-                + "5개 일치, 보너스 볼 일치 (30,000,000원) -" + secondPlaceCount + "개\n"
-                + "6개 일치 (2,000,000,000원) -" + fifthPlaceCount + "개\n";
+        Place[] places = Place.values();
+
+        for (Lotto lotto : this.lottoList) {
+            int lottoWinNumber = lotto.validateWin(this.userNumbers, bonusNumber);
+            int placeNumber = changeLottoWinOrdinalToPlaceOrdinal(lottoWinNumber);
+            Integer beforeValue = nullCheck(placeCount.get(places[placeNumber - 1]));
+            placeCount.put(places[placeNumber], beforeValue + 1);
+        }
+
     }
 
+    private Integer nullCheck(Integer integer) {
+        if (integer == null) {
+            return 0;
+        }
+        return integer;
+    }
+
+    private int changeLottoWinOrdinalToPlaceOrdinal(int lottoWinOrdinal) {
+        return lottoWinOrdinal - 1;
+    }
+
+    private double calculateProfitRate(int inputPrice) {
+        return (getProfit() - inputPrice) / inputPrice * 100;
+    }
+
+    private double getProfit() {
+        double profit = 0;
+
+        for (Place key : this.placeCount.keySet()) {
+            profit += key.getValue() * this.placeCount.get(key);
+        }
+
+        return profit;
+    }
+
+    public String printWinCount() {
+
+        StringBuilder sb = new StringBuilder();
+
+        for (Place key : this.placeCount.keySet()) {
+            sb.append(key.getWinNotice())
+                    .append(" (").append(key.getValue())
+                    .append("원) - ")
+                    .append(this.placeCount.get(key))
+                    .append("개\n");
+
+        }
+        return sb.toString();
+    }
+
+    public String printProfitRate(int inputPrice) {
+
+        return "총 수익률은 "
+                + String.format("%.2f", calculateProfitRate(inputPrice))
+                + "입니다";
+    }
 }

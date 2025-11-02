@@ -2,7 +2,6 @@ package lotto.model.domain;
 
 import java.util.Arrays;
 import java.util.List;
-import lotto.Lotto;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,9 +17,9 @@ class LottoWinVerifierTest {
     @DisplayName("로또 검증기 출력 테스트")
     public void lootVerifierOutTest() {
 
-        LottoWinVerifier lottoWinVerifier = new LottoWinVerifier(numbers, lottoList);
+        LottoWinVerifier lottoWinVerifier = new LottoWinVerifier(numbers, lottoList, 7);
 
-        Assertions.assertThat(lottoWinVerifier.toString()).contains("개 일치", "개");
+        Assertions.assertThat(lottoWinVerifier.printWinCount()).contains("개 일치", "개");
 
     }
 
