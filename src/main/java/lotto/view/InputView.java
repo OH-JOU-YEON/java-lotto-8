@@ -12,4 +12,9 @@ public class InputView {
         return Long.parseLong(Console.readLine());
     }
 
+    public String getInputUserNumbers() {
+        System.out.println(InputNotice.USER_NUMBERS_INPUT.getNoticeString());
+        return Console.readLine();
+    }
+
 }

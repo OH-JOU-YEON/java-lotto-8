@@ -17,4 +17,24 @@ class InputVerifierTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @Test
+    @DisplayName("사용자 입력 번호 예외 테스트")
+    public void verifyUserNumbersTest() {
+
+        InputVerifier inputVerifier = new InputVerifier();
+
+        Assertions.assertThatThrownBy(() -> inputVerifier.verifyUserNumbersFormat("467,13,21"))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("사용자 입력 번호에 숫자 외의 것이 들어갔는지 테스트")
+    public void verifyUserNumbersFormatTest() {
+
+        InputVerifier inputVerifier = new InputVerifier();
+
+        Assertions.assertThatThrownBy(() -> inputVerifier.verifyUserNumbersFormat("4문7,13,21"))
+                .isInstanceOf(IllegalArgumentException.class);
+
+    }
 }
