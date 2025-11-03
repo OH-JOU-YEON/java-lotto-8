@@ -1,7 +1,9 @@
 package lotto.model.domain.verifier;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Pattern;
 import lotto.model.domain.constant.ErrorNotice;
 
@@ -25,10 +27,19 @@ public class InputVerifier {
     public void verifyUserNumbersFormat(String userNumbersString) {
 
         List<String> userNumbers = Arrays.stream(userNumbersString.split(userNumberSeparator.pattern())).toList();
-
+        Set<String> duplicatedChecker = new HashSet<>();
         for (String userNumber : userNumbers) {
             verifyNumericType(userNumber);
             verifyUserNumbersRange(userNumber);
+            duplicatedChecker.add(userNumber);
+        }
+        checkDuplicated(duplicatedChecker);
+    }
+
+    public void checkDuplicated(Set<String> duplicatedChecker) {
+        if (duplicatedChecker.size() != 6) {
+            throw new IllegalArgumentException(
+                    ErrorNotice.INPUT_USER_NUMBERS_DUPLICATED_ERROR_NOTICE.getErrorNoticeString());
         }
     }
 
