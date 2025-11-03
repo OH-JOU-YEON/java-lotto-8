@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 class LottoMakerTest {
 
-    LottoMaker lottoMaker = new LottoMaker();
+    LottoMaker lottoMaker = LottoMaker.INSTANCE;
 
     @Test
     @DisplayName("로또금액과 돈을 넣으면 개수만큼 로또를 발행하는지 테스트")
