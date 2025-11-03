@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 import lotto.model.domain.constant.ErrorNotice;
+import lotto.model.domain.constant.LottoPrice;
 import lotto.model.domain.constant.LottoWinConstant;
 
 public class InputVerifier {
@@ -14,7 +15,7 @@ public class InputVerifier {
     Pattern userNumberTypeVerifier = Pattern.compile("\\D");
 
     public void verifyPrice(Long price) {
-        if (price % LottoWinConstant.LOTTO_NUMBERS_COUNT.getWinConstant() != 0) {
+        if (price % LottoPrice.EACH_PRICE.getPrice() != 0) {
             throw new IllegalArgumentException(ErrorNotice.INPUT_PRICE_ERROR_NOTICE.getErrorNotice());
         }
     }

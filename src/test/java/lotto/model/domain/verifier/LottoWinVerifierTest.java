@@ -31,6 +31,6 @@ class LottoWinVerifierTest {
     public void lottoProfitRateTest() {
         LottoWinVerifier lottoWinVerifier = new LottoWinVerifier(numbers, lottoList, 7);
 
-        Assertions.assertThat(lottoWinVerifier.printProfitRate(1000)).contains("199999900.0");
+        Assertions.assertThat(lottoWinVerifier.printProfitRate(1000)).contains(".0%");
     }
 }

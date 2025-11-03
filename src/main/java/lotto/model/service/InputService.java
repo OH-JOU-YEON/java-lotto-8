@@ -8,8 +8,8 @@ import lotto.view.InputView;
 
 public class InputService {
 
-    private final InputView inputView = new InputView();
     private final InputVerifier inputVerifier = new InputVerifier();
+    private final InputView inputView = new InputView();
     Pattern userNumberSeparator = Pattern.compile(",");
 
     public long getInputLottoPrice() {

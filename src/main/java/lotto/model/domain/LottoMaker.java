@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import lotto.model.domain.constant.LottoPrice;
+import lotto.model.domain.constant.LottoWinConstant;
 
 public enum LottoMaker {
 
@@ -18,7 +19,10 @@ public enum LottoMaker {
         List<LottoAndBonusNumber> lottoList = new ArrayList<>();
 
         for (int i = 0; i < lottoQuantity; i++) {
-            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 7);
+            List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(
+                    LottoWinConstant.LOTTO_NUMBER_MIN_VALUE.getWinConstant()
+                    , LottoWinConstant.LOTTO_NUMBER_MAX_VALUE.getWinConstant(),
+                    LottoWinConstant.LOTTO_NUMBERS_COUNT.getWinConstant() + 1);
             Lotto lotto = new Lotto(randomNumbers.subList(0, 6));
             Integer bonusNumber = randomNumbers.get(randomNumbers.size() - 1);
             LottoAndBonusNumber lottoAndBonusNumber = new LottoAndBonusNumber(lotto, bonusNumber);
