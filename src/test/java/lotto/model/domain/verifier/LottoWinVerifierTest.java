@@ -1,8 +1,10 @@
-package lotto.model.domain;
+package lotto.model.domain.verifier;
 
 import java.util.Arrays;
 import java.util.List;
-import lotto.model.domain.verifier.LottoWinVerifier;
+import lotto.model.domain.Lotto;
+import lotto.model.domain.LottoAndBonusNumber;
+import lotto.model.domain.LottoMaker;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
