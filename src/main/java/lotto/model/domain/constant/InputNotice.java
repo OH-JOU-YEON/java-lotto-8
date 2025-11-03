@@ -6,13 +6,13 @@ public enum InputNotice {
     USER_NUMBERS_INPUT("당첨 번호를 입력해주세요."),
     BONUS_NUMBER_INPUT("보너스 번호를 입력해주세요.");
 
-    private final String noticeString;
+    private final String notice;
 
-    InputNotice(String noticeString) {
-        this.noticeString = noticeString;
+    InputNotice(String notice) {
+        this.notice = notice;
     }
 
-    public String getNoticeString() {
-        return this.noticeString;
+    public String getNotice() {
+        return this.notice;
     }
 }

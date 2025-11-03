@@ -8,17 +8,17 @@ public class InputView {
     // 입력을 받는다
 
     public String getInputPrice() {
-        System.out.println(InputNotice.PRICE_INPUT.getNoticeString());
+        System.out.println(InputNotice.PRICE_INPUT.getNotice());
         return Console.readLine();
     }
 
     public String getInputUserNumbers() {
-        System.out.println(InputNotice.USER_NUMBERS_INPUT.getNoticeString());
+        System.out.println(InputNotice.USER_NUMBERS_INPUT.getNotice());
         return Console.readLine();
     }
 
     public Integer getBonusNumber() {
-        System.out.println(InputNotice.BONUS_NUMBER_INPUT.getNoticeString());
+        System.out.println(InputNotice.BONUS_NUMBER_INPUT.getNotice());
         return Integer.parseInt(Console.readLine());
     }
 }

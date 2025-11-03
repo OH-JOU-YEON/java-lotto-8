@@ -8,13 +8,13 @@ public enum ErrorNotice {
     INPUT_USER_NUMBERS_DUPLICATED_ERROR_NOTICE("[ERROR] 로또 번호는 중복 없는 6개의 숫자여야 합니다"),
     INPUT_BONUS_NUMBER_RANGE_ERROR_NOTICE("[ERROR] 보너스 번호는 1부터 45 사이의 숫자여야 합니다.");
 
-    private final String errorNoticeString;
+    private final String errorNotice;
 
-    ErrorNotice(String errorNoticeString) {
-        this.errorNoticeString = errorNoticeString;
+    ErrorNotice(String errorNotice) {
+        this.errorNotice = errorNotice;
     }
 
-    public String getErrorNoticeString() {
-        return this.errorNoticeString;
+    public String getErrorNotice() {
+        return this.errorNotice;
     }
 }
