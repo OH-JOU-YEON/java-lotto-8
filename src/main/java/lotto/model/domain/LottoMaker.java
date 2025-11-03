@@ -23,7 +23,9 @@ public enum LottoMaker {
                     LottoWinConstant.LOTTO_NUMBER_MIN_VALUE.getWinConstant()
                     , LottoWinConstant.LOTTO_NUMBER_MAX_VALUE.getWinConstant(),
                     LottoWinConstant.LOTTO_NUMBERS_COUNT.getWinConstant() + 1);
-            Lotto lotto = new Lotto(randomNumbers.subList(0, 6));
+            Lotto lotto = new Lotto(new ArrayList<>(randomNumbers.subList(
+                    LottoWinConstant.LOTTO_NUMBER_MIN_VALUE.getWinConstant() - 1,
+                    LottoWinConstant.LOTTO_NUMBERS_COUNT.getWinConstant())));
             Integer bonusNumber = randomNumbers.get(randomNumbers.size() - 1);
             LottoAndBonusNumber lottoAndBonusNumber = new LottoAndBonusNumber(lotto, bonusNumber);
             lottoList.add(lottoAndBonusNumber);
