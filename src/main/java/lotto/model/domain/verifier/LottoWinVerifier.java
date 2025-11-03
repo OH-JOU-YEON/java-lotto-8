@@ -1,5 +1,8 @@
 package lotto.model.domain.verifier;
 
+import java.text.DecimalFormat;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +26,15 @@ public class LottoWinVerifier {
     public LottoWinVerifier(List<Integer> inputNumbers, List<LottoAndBonusNumber> lottoList, Integer bonusNumber) {
         this.lottoList = lottoList;
         this.userNumbers = inputNumbers;
+        initializePlaceCount();
         verifyLottoPlace(bonusNumber);
+    }
+
+    private void initializePlaceCount() {
+        List<Place> places = Arrays.stream(Place.values()).sorted(Collections.reverseOrder()).toList();
+        for (Place place : places) {
+            this.placeCount.put(place, 0);
+        }
     }
 
     private void verifyLottoPlace(int bonusNumber) {
@@ -36,6 +47,9 @@ public class LottoWinVerifier {
             int lottoWinNumber = lottoAndBonus.lotto()
                     .validateWin(this.userNumbers, lottoAndBonus.bonusNumber(), bonusNumber);
             int placeNumber = changeLottoWinOrdinalToPlaceOrdinal(lottoWinNumber);
+            if (placeNumber < 0) {
+                continue;
+            }
             Integer beforeValue = nullCheck(placeCount.get(places[placeNumber]));
             placeCount.put(places[placeNumber], beforeValue + 1);
         }
@@ -49,12 +63,13 @@ public class LottoWinVerifier {
         return integer;
     }
 
+
     private int changeLottoWinOrdinalToPlaceOrdinal(int lottoWinOrdinal) {
         return lottoWinOrdinal - 1;
     }
 
     private double calculateProfitRate(long inputPrice) {
-        return (getProfit() - inputPrice) / inputPrice * 100;
+        return (getProfit()) / inputPrice * 100;
     }
 
     private double getProfit() {
@@ -69,13 +84,15 @@ public class LottoWinVerifier {
 
     public String printWinCount() {
 
+        DecimalFormat df = new DecimalFormat("###,###");
+
         StringBuilder sb = new StringBuilder();
 
         for (Place key : this.placeCount.keySet()) {
             sb.append(key.getWinNotice())
-                    .append(" (").append(key.getValue())
+                    .append(" (").append(df.format(key.getValue()))
                     .append("원) - ")
-                    .append(this.placeCount.get(key))
+                    .append(this.placeCount.get(key).toString())
                     .append("개\n");
 
         }
@@ -86,6 +103,6 @@ public class LottoWinVerifier {
 
         return "총 수익률은 "
                 + String.format("%.1f", calculateProfitRate(inputPrice))
-                + "입니다";
+                + "%입니다.";
     }
 }

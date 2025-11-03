@@ -7,7 +7,7 @@ import lotto.model.domain.verifier.LottoWinVerifier;
 public class OutputView {
 
     public void printLottoQuantity(long quantity) {
-        System.out.println(quantity + "개 구매했습니다");
+        System.out.println(quantity + "개를 구매했습니다.");
     }
 
     public void printLotto(List<LottoAndBonusNumber> lottoList) {

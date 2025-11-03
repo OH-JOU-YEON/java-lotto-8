@@ -16,15 +16,15 @@ public class LottoLauncherController {
     public void runLottoLauncher() {
 
         long inputPrice = inputService.getInputLottoPrice();
-        outputView.printLottoQuantity(lottoMaker.getLottoQuantity(inputPrice));
-
-        List<LottoAndBonusNumber> lottoList = lottoMaker.issueLotto(inputPrice);
-        outputView.printLotto(lottoList);
 
         List<Integer> userNumbers = inputService.getLottoNumber();
         Integer userBonusNumber = inputService.getBonusNumber();
 
+        List<LottoAndBonusNumber> lottoList = lottoMaker.issueLotto(inputPrice);
         LottoWinVerifier lottoWinVerifier = new LottoWinVerifier(userNumbers, lottoList, userBonusNumber);
+
+        outputView.printLottoQuantity(lottoMaker.getLottoQuantity(inputPrice));
+        outputView.printLotto(lottoList);
         outputView.printWinDetail(lottoWinVerifier);
         outputView.printWinProfitRate(lottoWinVerifier, inputPrice);
 

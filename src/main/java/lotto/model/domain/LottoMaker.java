@@ -19,7 +19,7 @@ public enum LottoMaker {
         for (int i = 0; i < lottoQuantity; i++) {
             List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 7);
             Lotto lotto = new Lotto(randomNumbers.subList(0, 6));
-            Integer bonusNumber = randomNumbers.get(6);
+            Integer bonusNumber = randomNumbers.get(randomNumbers.size() - 1);
             LottoAndBonusNumber lottoAndBonusNumber = new LottoAndBonusNumber(lotto, bonusNumber);
             lottoList.add(lottoAndBonusNumber);
         }
