@@ -63,5 +63,4 @@ public class InputVerifier {
                     ErrorNotice.INPUT_BONUS_NUMBER_RANGE_ERROR_NOTICE.getErrorNoticeString());
         }
     }
-
 }

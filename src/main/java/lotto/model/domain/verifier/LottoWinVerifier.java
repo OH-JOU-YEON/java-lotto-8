@@ -53,7 +53,6 @@ public class LottoWinVerifier {
             Integer beforeValue = nullCheck(placeCount.get(places[placeNumber]));
             placeCount.put(places[placeNumber], beforeValue + 1);
         }
-
     }
 
     private Integer nullCheck(Integer integer) {

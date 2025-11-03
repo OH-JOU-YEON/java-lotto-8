@@ -30,5 +30,4 @@ public enum LottoMaker {
     public long getLottoQuantity(long inputPrice) {
         return inputPrice / this.lottoPrice;
     }
-
 }

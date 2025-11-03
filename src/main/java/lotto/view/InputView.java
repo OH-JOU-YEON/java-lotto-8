@@ -21,5 +21,4 @@ public class InputView {
         System.out.println(InputNotice.BONUS_NUMBER_INPUT.getNoticeString());
         return Integer.parseInt(Console.readLine());
     }
-
 }
