@@ -3,7 +3,7 @@ package lotto.model.domain.verifier;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
-import lotto.model.domain.Enum.ErrorNotice;
+import lotto.model.domain.constant.ErrorNotice;
 
 public class InputVerifier {
 

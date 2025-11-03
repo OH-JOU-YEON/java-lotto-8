@@ -3,8 +3,8 @@ package lotto.model.domain.verifier;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import lotto.model.domain.Enum.Place;
 import lotto.model.domain.LottoAndBonusNumber;
+import lotto.model.domain.constant.Place;
 
 public class LottoWinVerifier {
 

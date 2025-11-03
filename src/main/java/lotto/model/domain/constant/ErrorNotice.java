@@ -1,4 +1,4 @@
-package lotto.model.domain.Enum;
+package lotto.model.domain.constant;
 
 public enum ErrorNotice {
 
