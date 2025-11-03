@@ -1,7 +1,9 @@
 package lotto.model.domain;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import lotto.model.domain.constant.ErrorNotice;
 import lotto.model.domain.constant.LottoWinConstant;
 
@@ -10,12 +12,21 @@ public class Lotto {
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
+        validateNumbersDuplicate(numbers);
         this.numbers = numbers;
     }
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LottoWinConstant.LOTTO_NUMBERS_COUNT.getWinConstant()) {
             throw new IllegalArgumentException(ErrorNotice.INPUT_USER_NUMBERS_COUNT_ERROR_NOTICE.getErrorNotice());
+        }
+    }
+
+    private void validateNumbersDuplicate(List<Integer> numbers) {
+        Set<Integer> lottoNumberSet = new HashSet<>(numbers);
+
+        if (lottoNumberSet.size() != numbers.size()) {
+            throw new IllegalArgumentException(ErrorNotice.LOTTO_NUMBERS_DUPLICATE_NOTICE.getErrorNotice());
         }
     }
 
