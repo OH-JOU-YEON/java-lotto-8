@@ -13,7 +13,9 @@ public class InputService {
     Pattern userNumberSeparator = Pattern.compile(",");
 
     public long getInputLottoPrice() {
-        long lottoPrice = inputView.getInputPrice();
+        String lottoPriceString = inputView.getInputPrice();
+        inputVerifier.verifyPriceFormat(lottoPriceString);
+        long lottoPrice = Long.parseLong(lottoPriceString);
         inputVerifier.verifyPrice(lottoPrice);
         return lottoPrice;
     }

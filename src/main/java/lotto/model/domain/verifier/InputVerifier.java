@@ -11,9 +11,14 @@ public class InputVerifier {
     Pattern userNumberTypeVerifier = Pattern.compile("\\D");
 
     public void verifyPrice(Long price) {
-
         if (price % 1000 != 0) {
             throw new IllegalArgumentException(ErrorNotice.INPUT_PRICE_ERROR_NOTICE.getErrorNoticeString());
+        }
+    }
+
+    public void verifyPriceFormat(String inputPriceString) {
+        if (userNumberTypeVerifier.matcher(inputPriceString).find()) {
+            throw new IllegalArgumentException(ErrorNotice.INPUT_PRICE_FORMAT_ERROR_NOTICE.getErrorNoticeString());
         }
     }
 

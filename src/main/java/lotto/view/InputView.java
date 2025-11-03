@@ -7,9 +7,9 @@ public class InputView {
 
     // 입력을 받는다
 
-    public long getInputPrice() {
+    public String getInputPrice() {
         System.out.println(InputNotice.PRICE_INPUT.getNoticeString());
-        return Long.parseLong(Console.readLine());
+        return Console.readLine();
     }
 
     public String getInputUserNumbers() {
