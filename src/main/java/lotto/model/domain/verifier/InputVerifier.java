@@ -41,4 +41,11 @@ public class InputVerifier {
         }
     }
 
+    public void verifyBonusNumberRange(Integer bonusNumber) {
+        if (bonusNumber > 45 || bonusNumber == 0) {
+            throw new IllegalArgumentException(
+                    ErrorNotice.INPUT_BONUS_NUMBER_RANGE_ERROR_NOTICE.getErrorNoticeString());
+        }
+    }
+
 }
