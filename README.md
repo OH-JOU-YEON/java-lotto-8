@@ -44,7 +44,7 @@ lotto
         │   └── InputViewVerifier.java       ← 사용자 입력값 검증 로직
         │
         └── service
-            └── InputViewService.java        ← ✅ 입력 관련 비즈니스 로직 담당
+            └── InputViewService.java        ← 입력 관련 비즈니스 로직 담당
 
 ```
 
