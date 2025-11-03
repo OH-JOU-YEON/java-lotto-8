@@ -27,6 +27,5 @@ public class LottoLauncherController {
         outputView.printLotto(lottoList);
         outputView.printWinDetail(lottoWinVerifier);
         outputView.printWinProfitRate(lottoWinVerifier, inputPrice);
-
     }
 }

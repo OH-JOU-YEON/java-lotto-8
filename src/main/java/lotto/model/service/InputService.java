@@ -13,23 +13,38 @@ public class InputService {
     Pattern userNumberSeparator = Pattern.compile(",");
 
     public long getInputLottoPrice() {
-        String lottoPriceString = inputView.getInputPrice();
-        inputVerifier.verifyPriceFormat(lottoPriceString);
-        long lottoPrice = Long.parseLong(lottoPriceString);
-        inputVerifier.verifyPrice(lottoPrice);
-        return lottoPrice;
+        try {
+            String lottoPriceString = inputView.getInputPrice();
+            inputVerifier.verifyPriceFormat(lottoPriceString);
+            long lottoPrice = Long.parseLong(lottoPriceString);
+            inputVerifier.verifyPrice(lottoPrice);
+            return lottoPrice;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getInputLottoPrice();
+        }
     }
 
     public List<Integer> getLottoNumber() {
-        String inputLottoNumber = inputView.getInputUserNumbers();
-        inputVerifier.verifyUserNumbersFormat(inputLottoNumber);
-        return Arrays.stream(inputLottoNumber.split(userNumberSeparator.pattern()))
-                .map(Integer::parseInt).toList();
+        try {
+            String inputLottoNumber = inputView.getInputUserNumbers();
+            inputVerifier.verifyUserNumbersFormat(inputLottoNumber);
+            return Arrays.stream(inputLottoNumber.split(userNumberSeparator.pattern()))
+                    .map(Integer::parseInt).toList();
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getLottoNumber();
+        }
     }
 
     public Integer getBonusNumber() {
-        Integer bonusNumber = inputView.getBonusNumber();
-        inputVerifier.verifyBonusNumberRange(bonusNumber);
-        return bonusNumber;
+        try {
+            Integer bonusNumber = inputView.getBonusNumber();
+            inputVerifier.verifyBonusNumberRange(bonusNumber);
+            return bonusNumber;
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getBonusNumber();
+        }
     }
 }
