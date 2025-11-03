@@ -2,6 +2,7 @@ package lotto.model.domain;
 
 import java.util.List;
 import java.util.Objects;
+import lotto.model.domain.constant.LottoWinConstant;
 
 public class Lotto {
     private final List<Integer> numbers;
@@ -12,7 +13,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LottoWinConstant.LOTTO_NUMBERS_COUNT.getWinConstant()) {
             throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
         }
     }
@@ -35,12 +36,13 @@ public class Lotto {
     }
 
     public int determinePlace(int count, boolean bonus) {
-        if ((count == 5 && bonus) || (count >= 6)) {
-            return 7 - count;
+        if ((count == LottoWinConstant.SECOND_CONDITION.getWinConstant() && bonus)
+                || (count >= LottoWinConstant.LOTTO_NUMBERS_COUNT.getWinConstant())) {
+            return LottoWinConstant.FIRST_TO_SECOND.getWinConstant() - count;
         }
 
-        if (count >= 3) {
-            return 8 - count;
+        if (count >= LottoWinConstant.FIFTH_CONDITION.getWinConstant()) {
+            return LottoWinConstant.THIRD_TO_LAST.getWinConstant() - count;
         }
 
         return 0;

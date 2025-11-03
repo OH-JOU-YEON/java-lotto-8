@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 import lotto.model.domain.constant.ErrorNotice;
+import lotto.model.domain.constant.LottoWinConstant;
 
 public class InputVerifier {
 
@@ -13,7 +14,7 @@ public class InputVerifier {
     Pattern userNumberTypeVerifier = Pattern.compile("\\D");
 
     public void verifyPrice(Long price) {
-        if (price % 1000 != 0) {
+        if (price % LottoWinConstant.LOTTO_NUMBERS_COUNT.getWinConstant() != 0) {
             throw new IllegalArgumentException(ErrorNotice.INPUT_PRICE_ERROR_NOTICE.getErrorNotice());
         }
     }
@@ -37,7 +38,7 @@ public class InputVerifier {
     }
 
     public void checkDuplicated(Set<String> duplicatedChecker) {
-        if (duplicatedChecker.size() != 6) {
+        if (duplicatedChecker.size() != LottoWinConstant.LOTTO_NUMBERS_COUNT.getWinConstant()) {
             throw new IllegalArgumentException(
                     ErrorNotice.INPUT_USER_NUMBERS_DUPLICATED_ERROR_NOTICE.getErrorNotice());
         }
@@ -51,14 +52,16 @@ public class InputVerifier {
     }
 
     private void verifyUserNumbersRange(String userNumber) {
-        if (Long.parseLong(userNumber) > 45 || Long.parseLong(userNumber) == 0) {
+        if (Long.parseLong(userNumber) > LottoWinConstant.LOTTO_NUMBER_MAX_VALUE.getWinConstant() ||
+                Long.parseLong(userNumber) < LottoWinConstant.LOTTO_NUMBER_MIN_VALUE.getWinConstant()) {
             throw new IllegalArgumentException(
                     ErrorNotice.INPUT_USER_NUMBERS_FORMAT_ERROR_NOTICE.getErrorNotice());
         }
     }
 
     public void verifyBonusNumberRange(Integer bonusNumber) {
-        if (bonusNumber > 45 || bonusNumber == 0) {
+        if (bonusNumber > LottoWinConstant.LOTTO_NUMBER_MAX_VALUE.getWinConstant() ||
+                bonusNumber < LottoWinConstant.LOTTO_NUMBER_MIN_VALUE.getWinConstant()) {
             throw new IllegalArgumentException(
                     ErrorNotice.INPUT_BONUS_NUMBER_RANGE_ERROR_NOTICE.getErrorNotice());
         }
