@@ -2,6 +2,7 @@ package lotto.model.domain;
 
 import java.util.List;
 import java.util.Objects;
+import lotto.model.domain.constant.ErrorNotice;
 import lotto.model.domain.constant.LottoWinConstant;
 
 public class Lotto {
@@ -14,7 +15,7 @@ public class Lotto {
 
     private void validate(List<Integer> numbers) {
         if (numbers.size() != LottoWinConstant.LOTTO_NUMBERS_COUNT.getWinConstant()) {
-            throw new IllegalArgumentException("[ERROR] 로또 번호는 6개여야 합니다.");
+            throw new IllegalArgumentException(ErrorNotice.INPUT_USER_NUMBERS_COUNT_ERROR_NOTICE.getErrorNotice());
         }
     }
 
