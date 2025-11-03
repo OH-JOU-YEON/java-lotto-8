@@ -16,6 +16,38 @@
 
 ## 구조 
 
+```
+lotto
+├── controller
+│   └── LottoLauncherController.java         ← 애플리케이션 실행 제어
+│
+├── view
+│   ├── input
+│   │   └── InputView.java                  ← 사용자 입력 담당 (UI 계층)
+│   └── output
+│       └── OutputView.java                 ← 결과 출력 담당 (UI 계층)
+│
+└── model
+    └── domain
+        ├── Lotto.java                       ← 로또 한 장 객체
+        ├── LottoAndBonusNumber.java         ← 로또 + 보너스 번호 객체
+        ├── LottoMaker.java                  ← 로또 발행기
+        │
+        ├── constant
+        │   ├── LottoWinConstant.java        ← 당첨 조건 상수
+        │   ├── LottoPrice.java              ← 로또 가격 상수
+        │   ├── ErrorNotice.java             ← 오류 메시지 상수
+        │   └── Place.java                   ← 등수 및 상금 정의
+        │
+        ├── verifier
+        │   ├── LottoWinVerifier.java        ← 당첨 검증 로직
+        │   └── InputViewVerifier.java       ← 사용자 입력값 검증 로직
+        │
+        └── service
+            └── InputViewService.java        ← ✅ 입력 관련 비즈니스 로직 담당
+
+```
+
 #### LottoLauncherContorller에서 전체적인 흐름을 제어합니다.
 #### InputViewService는 사용자에게 입력 기능을 제공합니다. 
 - InputView로 입력을 받습니다.
