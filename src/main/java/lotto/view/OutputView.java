@@ -1,7 +1,7 @@
 package lotto.view;
 
 import java.util.List;
-import lotto.model.domain.Lotto;
+import lotto.model.domain.LottoAndBonusNumber;
 import lotto.model.domain.verifier.LottoWinVerifier;
 
 public class OutputView {
@@ -10,9 +10,9 @@ public class OutputView {
         System.out.println(quantity + "개 구매했습니다");
     }
 
-    public void printLotto(List<Lotto> lottoList) {
-        for (Lotto lotto : lottoList) {
-            System.out.println(lotto.printLotto());
+    public void printLotto(List<LottoAndBonusNumber> lottoList) {
+        for (LottoAndBonusNumber lottoAndBonus : lottoList) {
+            System.out.println(lottoAndBonus.lotto().printLotto());
         }
     }
 

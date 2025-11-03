@@ -20,7 +20,7 @@ public class LottoWinVerifier {
     private final Map<Place, Integer> placeCount = new EnumMap<>(Place.class);
 
 
-    public LottoWinVerifier(List<Integer> inputNumbers, List<LottoAndBonusNumber> lottoList, int bonusNumber) {
+    public LottoWinVerifier(List<Integer> inputNumbers, List<LottoAndBonusNumber> lottoList, Integer bonusNumber) {
         this.lottoList = lottoList;
         this.userNumbers = inputNumbers;
         verifyLottoPlace(bonusNumber);
