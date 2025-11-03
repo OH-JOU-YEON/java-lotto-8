@@ -27,8 +27,8 @@ class LottoWinVerifierTest {
     }
 
     @Test
-    @DisplayName("검증기가 올바른 수익률을 반환하는지 테스트")
-    public void lottoProfitRateTest() {
+    @DisplayName("검증기가 수익률을 제대로 된 자릿수로 나타내는지 테스트")
+    public void lottoProfitRateFormatTest() {
         LottoWinVerifier lottoWinVerifier = new LottoWinVerifier(numbers, lottoList, 7);
 
         Assertions.assertThat(lottoWinVerifier.printProfitRate(1000)).contains(".0%");
