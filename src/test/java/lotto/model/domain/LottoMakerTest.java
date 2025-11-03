@@ -16,6 +16,4 @@ class LottoMakerTest {
 
         Assertions.assertThat(issuedLotto.size()).isEqualTo(10);
     }
-
-
 }

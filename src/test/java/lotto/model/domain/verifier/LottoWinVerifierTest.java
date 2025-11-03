@@ -24,7 +24,6 @@ class LottoWinVerifierTest {
         LottoWinVerifier lottoWinVerifier = new LottoWinVerifier(numbers, lottoList, 7);
 
         Assertions.assertThat(lottoWinVerifier.printWinCount()).contains("개 일치", "개");
-
     }
 
     @Test
@@ -33,7 +32,5 @@ class LottoWinVerifierTest {
         LottoWinVerifier lottoWinVerifier = new LottoWinVerifier(numbers, lottoList, 7);
 
         Assertions.assertThat(lottoWinVerifier.printProfitRate(1000)).contains("199999900.0");
-
     }
-
 }

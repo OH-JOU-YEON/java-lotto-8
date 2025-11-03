@@ -35,6 +35,5 @@ class InputVerifierTest {
 
         Assertions.assertThatThrownBy(() -> inputVerifier.verifyUserNumbersFormat("4문7,13,21"))
                 .isInstanceOf(IllegalArgumentException.class);
-
     }
 }
